@@ -1,4 +1,4 @@
-name: nonproduction-ci
+name: preproduction-ci
 
 on:
   push:
