@@ -1,25 +1,22 @@
 name: nonproduction-ci
 
 on:
-  pull_request_review_comment:
-    types: [created, edited]
+  push:
+    branches:
+      - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    if: github.event.comment.body == 'DEPLOY'
     
     steps:
 
     - name: Checkout Repo
       uses: actions/checkout@v2
-      with:
-        ref: $GITHUB_REF
 
     - name: Prepare Lambda Version
       shell: bash
-      run: echo "##[set-output name=version;]$(date +%Y%m%d%H%M)_nonprod"
+      run: echo "##[set-output name=version;]$(date +%Y%m%d%H%M)_preprod"
       id: lambda_version
 
     - name: Echo Build Version
@@ -64,7 +61,7 @@ jobs:
 
     - name: Deploy RAP-J5
       run: |
-        cd infrastructure/microservices/rap-j5/nonproduction
+        cd infrastructure/microservices/rap-j5/preproduction
         echo init...
         terraform init
         echo refresh...
@@ -74,7 +71,7 @@ jobs:
 
     - name: Deploy RAP-Log-Store
       run: |
-        cd infrastructure/microservices/rap-log-store/nonproduction
+        cd infrastructure/microservices/rap-log-store/preproduction
         echo init...
         terraform init
         echo refresh...
