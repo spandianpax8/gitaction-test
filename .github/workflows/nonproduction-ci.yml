@@ -1,8 +1,8 @@
 name: nonproduction-ci
 
 on:
-  pull_request_review_comment:
-    types: [created, edited]
+  create:
+    pull_request_review_comment:
 
 jobs:
   build:
