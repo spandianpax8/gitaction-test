@@ -17,7 +17,7 @@ jobs:
 
     - name: Prepare Lambda Version
       shell: bash
-      run: echo "##[set-output name=version;]$(date +%Y%m%d%H%M)_${GITHUB_REF}"
+      run: echo "##[set-output name=version;]$(date +%Y%m%d%H%M)_${GITHUB_REF#refs/tags/}"
       id: lambda_version
 
     - name: Echo Build Version
