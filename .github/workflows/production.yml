@@ -1,4 +1,4 @@
-name: Pproduction-ci
+name: production-ci
 
 on:
   create:
