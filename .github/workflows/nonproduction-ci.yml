@@ -15,7 +15,7 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v2
       with:
-        ref: $GITHUB_REF
+        ref: ${{ github.GITHUB_REF }}
 
     - name: Prepare Lambda Version
       shell: bash
