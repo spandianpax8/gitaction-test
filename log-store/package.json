@@ -1,0 +1,28 @@
+{
+  "name": "log-store",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "mocha tests",
+    "pack": "npm-pack-zip"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.7.1",
+    "aws-sdk": "^2.513.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.0",
+    "nock": "^10.0.6",
+    "npm-pack-zip": "^1.2.7",
+    "serverless-prune-plugin": "^1.4.0",
+    "serverless-pseudo-parameters": "^2.5.0"
+  },
+  "bundleDependencies": [
+    "bluebird",
+    "aws-sdk"
+  ]
+}
