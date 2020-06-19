@@ -2,7 +2,9 @@ name: nonproduction-ci
 
 on:
   push:
-    branches: [ master ]
+    branches:
+      - ref/heads/master$
+      - ref/tags/*
 
 jobs:
   build:
