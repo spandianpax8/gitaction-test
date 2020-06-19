@@ -18,19 +18,23 @@ jobs:
       run: echo "##[set-output name=version;]$(date +%Y%m%d%H%M)"
       id: lambda_version
 
+    - name: Echo Env
+      run: |
+        echo ${{ steps.lambda_version.outputs.version }}
+
     - name: Build j5
       run: |
         cd j5
         npm install
         npm prune --production
-        zip -r j5.zip lib node_modules handler.js package.json
+        zip -qr j5.zip lib node_modules handler.js package.json
 
     - name: Build log-store
       run: |
         cd log-store
         npm install
         npm prune --production
-        zip -r log-store.zip lib node_modules handler.js package.json
+        zip -qr log-store.zip lib node_modules handler.js package.json
 
     - name: Configure AWS credentials from DEV account and assume a role for Terraform commands
       uses: aws-actions/configure-aws-credentials@v1
